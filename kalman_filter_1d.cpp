@@ -37,14 +37,11 @@ int main()
     tuple<double, double> priors;
     tuple<double, double> posteriors;
     
-    get<0>(priors) = mu;
-    get<1>(priors) = sig;
-    
     // Loop through all the measurments
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < sizeof(measurements) / sizeof(measurements[0]); i++)
     {
       // apply measurment update
-      posteriors = measurement_update(get<0>(priors), get<1>(priors), measurements[i], measurement_sig);
+      posteriors = measurement_update(mu, sig, measurements[i], measurement_sig);
       mu  = get<0>(posteriors);
       sig = get<1>(posteriors);
       printf("update:  [%f, %f]\n", mu, sig);
@@ -56,5 +53,18 @@ int main()
       printf("predict: [%f, %f]\n", mu, sig);
     }
     
+    // while that ^^^ code works - and illuminates some of the tuple access services - this is much cleaner
+    /*  
+    for (int i = 0; i < sizeof(measurements) / sizeof(measurements[0]); i++)
+    {
+      // Apply a measurment update
+      tie(mu, sig) = measurement_update(mu, sig, measurements[i], measurement_sig);
+      printf("update:  [%f, %f]\n", mu, sig);
+      
+      // Apply a state prediction
+      tie(mu, sig) = state_prediction(mu, sig, motion[i], motion_sig);
+      printf("predict: [%f, %f]\n", mu, sig);
+    }
+    */
     return 0;
 }
