@@ -53,7 +53,7 @@ int main()
       printf("predict: [%f, %f]\n", mu, sig);
     }
     
-    // while that ^^^ code works - and illuminates some of the tuple access services - this is much cleaner
+    // while that ^^^ code works - and illuminates some of the tuple access methods - this is much cleaner
     /*  
     for (int i = 0; i < sizeof(measurements) / sizeof(measurements[0]); i++)
     {
@@ -67,7 +67,7 @@ int main()
     }
     */
     
-    // another great tuple example: look like useful std::ignore is
+    // another great tuple example: look how useful std::ignore is here (like _ in python)
     /*
     int main () 
     {
