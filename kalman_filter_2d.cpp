@@ -42,6 +42,7 @@ tuple<MatrixXf, MatrixXf> kalman_filter(MatrixXf x, MatrixXf P, MatrixXf u, Matr
 int main()
 {
     cout << "starting program...\n";
+    // below would more likely use matrix.rows() and matrix.cols() instead of explicit dims
     MatrixXf x(2, 1);// Initial state (location and velocity) 
     x << 0,
          0; 
