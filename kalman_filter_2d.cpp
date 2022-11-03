@@ -44,24 +44,24 @@ int main()
     cout << "starting program...\n";
     MatrixXf x(2, 1);// Initial state (location and velocity) 
     x << 0,
-    	   0; 
+         0; 
     MatrixXf P(2, 2);//Initial Uncertainty
     P << 100, 0, 
-    	   0, 100; 
+         0, 100; 
     MatrixXf u(2, 1);// External Motion
     u << 0,
-    	   0; 
+         0; 
     MatrixXf F(2, 2);//Next State Function
     F << 1, 1,
-    	   0, 1; 
+         0, 1; 
     MatrixXf H(1, 2);//Measurement Function
     H << 1,
-    	   0; 
+         0; 
     MatrixXf R(1, 1); //Measurement Uncertainty
     R << 1;
     MatrixXf I(2, 2);// Identity Matrix
     I << 1, 0,
-    	   0, 1; 
+         0, 1; 
 
     tie(x, P) = kalman_filter(x, P, u, F, H, R, I);
     cout << "x= " << x << endl;
