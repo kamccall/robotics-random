@@ -6,6 +6,7 @@
 
 using namespace std;
 using namespace Eigen;
+// eigen online docs: https://eigen.tuxfamily.org/dox/group__QuickRefPage.html
 
 float measurements[3] = { 1, 2, 3 };
 
