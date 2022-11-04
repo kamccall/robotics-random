@@ -30,13 +30,13 @@ public:
     Robot()
     {
         // Constructor
-        x = gen_real_random() * world_size; // robot's x coordinate
-        y = gen_real_random() * world_size; // robot's y coordinate
+        x      = gen_real_random() * world_size; // robot's x coordinate
+        y      = gen_real_random() * world_size; // robot's y coordinate
         orient = gen_real_random() * 2.0 * M_PI; // robot's orientation
 
         forward_noise = 0.0; //noise of the forward movement
-        turn_noise = 0.0; //noise of the turn
-        sense_noise = 0.0; //noise of the sensing
+        turn_noise    = 0.0; //noise of the turn
+        sense_noise   = 0.0; //noise of the sensing
     }
 
     void set(double new_x, double new_y, double new_orient)
@@ -47,10 +47,10 @@ public:
         if (new_y < 0 || new_y >= world_size)
             throw std::invalid_argument("Y coordinate out of bound");
         if (new_orient < 0 || new_orient >= 2 * M_PI)
-            throw std::invalid_argument("Orientation must be in [0..2pi]");
+            throw std::invalid_argument("orientation must be in [0..2pi]");
 
-        x = new_x;
-        y = new_y;
+        x      = new_x;
+        y      = new_y;
         orient = new_orient;
     }
 
@@ -58,11 +58,11 @@ public:
     {
         // Simulate noise, often useful in particle filters
         forward_noise = new_forward_noise;
-        turn_noise = new_turn_noise;
-        sense_noise = new_sense_noise;
+        turn_noise    = new_turn_noise;
+        sense_noise   = new_sense_noise;
     }
 
-    vector<double> sense()
+    vector<double> sense()  // returns vector of euclidean distances to landmarks
     {
         // Measure the distances from the robot toward the landmarks
         vector<double> z(sizeof(landmarks) / sizeof(landmarks[0]));
@@ -73,13 +73,13 @@ public:
             dist += gen_gauss_random(0.0, sense_noise);
             z[i] = dist;
         }
-        return z;
+        return z;  
     }
 
     Robot move(double turn, double forward)
     {
         if (forward < 0)
-            throw std::invalid_argument("Robot cannot move backward");
+            throw std::invalid_argument("robot cannot move backward...");
 
         // turn, and add randomness to the turning command
         orient = orient + turn + gen_gauss_random(0.0, turn_noise);
