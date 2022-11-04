@@ -226,7 +226,13 @@ void visualization(int n, Robot robot, int step, Robot p[], Robot pr[])
 
 int main()
 {
-    // TODO: Print "I am ready for coding the MCL!"
+    Robot kmRobot;
+
+    kmRobot.set(30.0, 50.0, M_PI/2.0);      // set new position to x=30.0, y=50.0 and orientation=PI/2
+    kmRobot.move(M_PI/2.0, 15.0);           // turn counter-clockwise by PI/2 and move by 15 meters
+    cout << kmRobot.read_sensors() << endl; // print distance from the robot to the eight landmarks
+    kmRobot.move(-M_PI, 10.0);              // turn clockwise by PI and move by 10 meters
+    cout << kmRobot.read_sensors() << endl; // print distance from the robot to the eight landmarks
 
     return 0;
 }
