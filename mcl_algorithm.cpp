@@ -180,6 +180,7 @@ double evaluation(Robot r, Robot p[], int n)
     }
     return sum / n;
 }
+
 double max(double arr[], int n)
 {
     // Identify the max element in an array
