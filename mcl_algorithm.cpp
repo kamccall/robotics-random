@@ -254,7 +254,7 @@ int main()
     }
 	
 	test_robot = Robot();
-	vector<double> z;     // measurements of robot to each landmark
+	vector<double> z;                       // measurements of robot to each landmark
 	test_robot = test_robot.move(0.1, 5.0);
 	z = test_robot.sense();
 	
