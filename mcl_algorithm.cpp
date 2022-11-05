@@ -253,17 +253,17 @@ int main()
       cout << particles2[i].show_pose() << endl;
     }
 	
-	test_robot = Robot();
-	vector<double> z;                       // measurements of robot to each landmark
-	test_robot = test_robot.move(0.1, 5.0);
-	z = test_robot.sense();
+    test_robot = Robot();
+    vector<double> z;                       // measurements of robot to each landmark
+    test_robot = test_robot.move(0.1, 5.0);
+    z = test_robot.sense();
 	
-	double p_weights[n];
+    double p_weights[n];
 	
-	for (int i = 0; i < n; i++)
-	  p_weights[i] = particles2[i].measurement_prob(z);
+    for (int i = 0; i < n; i++)
+      p_weights[i] = particles2[i].measurement_prob(z);
 	
-	// resampling 
+    // resampling 
 	
     return 0;
 }
