@@ -226,7 +226,9 @@ void visualization(int n, Robot robot, int step, Robot p[], Robot pr[])
 
 int main()
 {
+    // example leveraging robot class
     Robot kmRobot;
+    kmRobot.set_noise(5.0, 0.1, 5.0);       // sets noise levels of different sensor readings
 
     kmRobot.set(30.0, 50.0, M_PI/2.0);      // set new position to x=30.0, y=50.0 and orientation=PI/2
     kmRobot.move(M_PI/2.0, 15.0);           // turn counter-clockwise by PI/2 and move by 15 meters
@@ -234,5 +236,21 @@ int main()
     kmRobot.move(-M_PI, 10.0);              // turn clockwise by PI and move by 10 meters
     cout << kmRobot.read_sensors() << endl; // print distance from the robot to the eight landmarks
 
+    // instantiate random particles
+    int n = 100;
+    Robot particles[n];
+    
+    for (int i = 0; i < n; i++)
+      particles[i].set_noise(0.05, 0.05, 5.0);  
+    
+    Robot particles2[n];
+    
+    for (int i = 0; i < n; i++)
+    {
+      particles2[i].move(0.1, 5.0);
+      particles[i] = particles2[i];
+      cout << particles2[i].show_pose() << endl;
+    }
+	
     return 0;
 }
