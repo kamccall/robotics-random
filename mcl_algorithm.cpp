@@ -264,6 +264,27 @@ int main()
       p_weights[i] = particles2[i].measurement_prob(z);
 	
     // resampling 
+    double beta  = 0.0;
+	int index    = gen_real_random() * n;
+	double max_w = max(p_weights, n);
+	Robot particles3[n];
+	
+	for (int i = 0; i < n; i++)
+    {
+        beta += (gen_real_random() * 2.0 * max_w);
+        while (beta > p_weights[index])
+        {
+            beta -= p_weights[index];
+            index = mod((index+1), n);
+        }
+        particle3[i] = particles[index];
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        particles[i] = particles3[i];
+        cout << particles[i].show_pose() << endl;
+    }
 	
     return 0;
 }
