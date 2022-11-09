@@ -21,10 +21,14 @@ void sensorFusion(double m1[][mapWidth], double m2[][mapWidth])
 
 int main()
 {
+  // do a 2x2 matrix first
+  double m1[mapHeight][mapWidth] = { { 0.9, 0.6 }, { 0.1, 0.5 } };
+  double m2[mapHeight][mapWidth] = { { 0.3, 0.4 }, { 0.4, 0.3 } };
+  sensorFusion(m1, m2);
 
-    double m1[mapHeight][mapWidth] = { { 0.9, 0.6 }, { 0.1, 0.5 } };
-    double m2[mapHeight][mapWidth] = { { 0.3, 0.4 }, { 0.4, 0.3 } };
-    sensorFusion(m1, m2);
-
-    return 0;
+  // do a 3x3 matrix as well
+  double m3;
+  double m4;
+  sensorFusion(m3, m4);
+  return 0;
 }
